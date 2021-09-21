@@ -12,8 +12,6 @@ faker.locale = "pt_BR";
 export async function seed(clearDatabase = false) {
 
   try {
-
-    console.log(await Bond.find({}));
     
     if (clearDatabase) {
       const deleteResult = await Promise.all([

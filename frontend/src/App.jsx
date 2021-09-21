@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
-import Home from './views/Home/Home';
-import ClientList from './views/Client/ClientList';
-import ClientForm from './views/Client/ClientForm';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { ThemeProvider, unstable_createMuiStrictModeTheme } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import Home from './views/Home/Home';
+import BondsList from './views/Bonds/BondsList';
+import ClientList from './views/Client/ClientList';
+import OrdersList from './views/Order/OrdersList';
 
 const theme = unstable_createMuiStrictModeTheme();
 
@@ -23,8 +24,9 @@ export default function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/clients" component={ClientList} />
-              <Route exact path="/clients/new" component={ClientForm} />
-              <Route exact path="/clients/:id" component={ClientForm} />
+              <Route exact path="/bonds" component={BondsList} />
+              <Route exact path="/orders" component={OrdersList} />
+              <Redirect path="*" to="/"></Redirect>
             </Switch>
 
           </div>

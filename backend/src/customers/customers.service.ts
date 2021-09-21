@@ -4,6 +4,11 @@ export default class CustomerService {
   static async list(queryParams: any) {
     try {
       const data = await Customer.aggregate([
+        ...(
+          queryParams.search 
+            ? [{ $match: { name: new RegExp(queryParams.search, 'i') } }] 
+            : []
+        ),
         {
           $lookup: {
             from: 'orders',
@@ -14,7 +19,7 @@ export default class CustomerService {
                   $expr: {
                     $and: [
                       { $eq: ['$customer', '$$customerId'] },
-                      ...(queryParams.defaulting ? [ { $eq: ['$paidAt', null] } ] : [])
+                      ...(queryParams.defaulting ? [{ $eq: ['$paidAt', null] }] : [])
                     ]
                   }
                 }
@@ -49,6 +54,11 @@ export default class CustomerService {
             document: { $first: '$document' },
             orders: { $push: '$orders' }
           }
+        },
+        {
+          $sort: {
+            name: 1
+          }
         }
       ]);
 
@@ -56,6 +66,7 @@ export default class CustomerService {
         const orderFound = customer.orders.find(order => !order.paidAt);
         customer.isDefaulting = !!orderFound;
         customer.since = orderFound ? orderFound.boughtAt : null;
+        customer.debt = customer.orders.reduce((ac, x) => ac + x.bond.price, 0)
         delete customer.orders
 
       });

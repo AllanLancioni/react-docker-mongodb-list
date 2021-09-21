@@ -37,7 +37,8 @@ export default function Header() {
   const menuItems = [
     { label: 'Home', link: '/' },
     { label: 'Clientes', link: '/clients' },
-    { label: 'Adicionar Cliente', link: '/clients/new' },
+    { label: 'Títulos', link: '/bonds' },
+    { label: 'Pedidos', link: '/orders' },
   ];
 
   return (
@@ -64,7 +65,7 @@ export default function Header() {
             </Drawer>
           </Hidden>
           <Typography variant="h6" className={classes.title}>
-            News
+            Portal
           </Typography>
           <Hidden smDown={true}>
             <div className={classes.menuLg}>

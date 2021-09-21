@@ -13,7 +13,7 @@ const app = express();
   // await seed(true);
 
   app.use(express.json());
-  app.use('/api/v1', router);
+  app.use('/v1/api', router);
 
   app.listen(port, HOST, () => {
     console.log(`listening ${HOST}:${port}...`);
