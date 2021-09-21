@@ -1,0 +1,33 @@
+use dev;
+
+db.createCollection("titles_customers");
+
+db.titles_customers.insertMany(
+    [
+    {status: 'defaulting',amount: 250, deleted: true, name: "Ferdinandes Guimarães"},
+    {status: 'defaulting',amount: 100, deleted: false, name: "João Victor"},
+    {status: 'defaulting',amount: 200, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 500, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 575, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 600, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 150, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 150, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 324, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 325, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 360, deleted: false, name: "Allan Lancioni"},
+    {status: 'defaulting',amount: 650, deleted: false, name: "Allan Lancioni"},
+    ]
+    )
+
+
+
+db = db.getSiblingDB('dev');
+db.createUser(
+  {
+    user: 'user',
+    pwd: '1234',
+    roles: [{ role: 'readWrite', db: 'api_prod_db' }],
+  },
+);
+
+db.createCollection('users');
