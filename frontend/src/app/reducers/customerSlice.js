@@ -14,7 +14,6 @@ const initialState = {
 export const getCustomers = createAsyncThunk(
   `${DEFAULTING_CUSTOMER}/get`,
   async (payload, meta) => {
-    console.log({ aaaa: meta.getState().customer })
     const { search, customerType } = meta.getState().customer;
     const { data } = await fetch(`${config.apiBase}/customers?type=${customerType}&search=${search}`).then(x => x.json());
     data.forEach((x, i) => x.id = i + 1);
@@ -30,7 +29,6 @@ export const counterSlice = createSlice({
       state.search = action.payload;      
     },
     updateType: (state, action) => {
-      console.log({ action })
       state.customerType = action.payload;
     },
   },

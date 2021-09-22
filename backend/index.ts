@@ -10,7 +10,7 @@ const app = express();
 
 (async () => {
   await connection;
-  // await seed(true);
+  await seed(true);
 
   app.use(express.json());
   app.use('/v1/api', router);

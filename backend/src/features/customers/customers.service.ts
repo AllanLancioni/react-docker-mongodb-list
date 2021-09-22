@@ -27,7 +27,6 @@ export default class CustomerService {
 
       return { data, count: data.length };
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }

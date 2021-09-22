@@ -30,8 +30,6 @@ export async function seed(clearDatabase = false) {
 
     const orders = await Order.insertMany(ordersSeed(bonds, customers, 30))
 
-    console.log({bonds, customers, orders});
-
     console.log('Seed ok!')
 
   } catch (error) {

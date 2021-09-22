@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const dbUri = `mongodb://root:1234@0.0.0.0:27017/dev?authSource=admin`
+const dbUri = `mongodb://root:1234@db:27017/dev?authSource=admin`
 const connection = mongoose.connect(dbUri);
 
 connection
