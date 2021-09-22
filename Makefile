@@ -8,8 +8,8 @@ down:
 
 .PHONY: restart
 restart:
-	docker-compose down
-	docker-compose up -d
+	make down
+	make up
 
 .PHONY: logs
 logs:
