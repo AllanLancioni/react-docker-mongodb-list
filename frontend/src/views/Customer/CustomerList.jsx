@@ -3,14 +3,16 @@ import { Container, Card, FormControl, TextField, Button, InputLabel, Select, Me
 import PageTitle from '../../components/PageTitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCustomers, updateSearch, updateType } from '../../app/reducers/customerSlice';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 const parseCurrency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
 const columns = [
   { field: 'id', headerName: '#', width: 9 },
   { field: 'name', headerName: 'Nome Completo', width: 200 },
-  { field: 'debt', headerName: 'Valor', width: 150, valueFormatter: x => parseCurrency.format(x.value) },
+  { field: 'orders', headerName: 'Pedidos', width: 125 },
+  { field: 'total', headerName: 'Total', width: 125, valueFormatter: x => parseCurrency.format(x.value) },
+  { field: 'debt', headerName: 'Dívida', width: 125, valueFormatter: x => parseCurrency.format(x.value) },
   { field: 'since', headerName: 'Desde', width: 200, valueFormatter: x => new Date(x.value).toLocaleString('pt-BR') },
   { field: 'email', headerName: 'Email', width: 250 },
 ];

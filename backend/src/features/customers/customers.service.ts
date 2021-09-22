@@ -10,10 +10,11 @@ export default class CustomerService {
 
       data = data.filter(customer => {
           const orderFound = customer.orders.find(order => !order.paidAt);
-          customer.isDefaulting = !!orderFound;
           customer.since = orderFound ? orderFound.boughtAt : null;
-          customer.debt = customer.orders.reduce((ac, x) => ac + x.bond.price, 0)
-          delete customer.orders
+          customer.total = customer.orders.reduce((ac, x) => ac + x.bond.price, 0)
+          customer.debt = customer.orders.reduce((ac, x) => ac + (x.paidAt ? 0 : x.bond.price), 0)
+          customer.isDefaulting = customer.debt > 0;
+          customer.orders = customer.orders.length;
 
           switch (queryParams.type) {
             case 'DEFAULTING':

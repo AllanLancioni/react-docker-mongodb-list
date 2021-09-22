@@ -12,7 +12,7 @@ services:
       MONGO_INITDB_DATABASE: dev
     command: [--auth]
   backend:
-    build: .  
+    build: ./backend  
     depends_on:
       - db
     ports:
@@ -20,3 +20,10 @@ services:
     environment:
       DB_NAME: 'dev'
       HOST: 'localhost'
+  frontend:
+    build: ./frontend  
+    depends_on:
+      - db
+      - backend
+    ports:
+      - 3000:3000

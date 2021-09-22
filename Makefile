@@ -1,9 +1,6 @@
-include .env
-
 .PHONY: up
 up:
-	docker-compose build
-	docker-compose up -d
+	docker-compose up --build -d
 
 .PHONY: down
 down:
