@@ -14,7 +14,7 @@ const columns = [
   { field: 'total', headerName: 'Total', width: 125, valueFormatter: x => parseCurrency.format(x.value) },
   { field: 'debt', headerName: 'Valor da Dívida', width: 125, valueFormatter: x => x.value ? parseCurrency.format(x.value) : '-' },
   // { field: 'isDefaulting', headerName: 'Inadimplente', width: 125, valueFormatter: x => x ? 'SIM' : 'NÃO' },
-  { field: 'since', headerName: 'Desde', width: 200, valueFormatter: x => new Date(x.value).toLocaleString('pt-BR') },
+  { field: 'since', headerName: 'Desde', width: 200, valueFormatter: x => x.value ? new Date(x.value).toLocaleString('pt-BR') : '-' },
   { field: 'email', headerName: 'Email', width: 250 },
 ];
 
