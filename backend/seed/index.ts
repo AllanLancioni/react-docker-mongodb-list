@@ -3,9 +3,9 @@ import { customersSeed } from './customers';
 import { bondsSeed } from './bonds';
 import { ordersSeed } from './orders';
 
-import { Customer } from '../src/customers/customers.model';
-import { Bond } from '../src/bonds/bonds.model';
-import { Order } from '../src/orders/orders.model';
+import { Customer } from '../src/features/customers/customers.model';
+import { Bond } from '../src/features/bonds/bonds.model';
+import { Order } from '../src/features/orders/orders.model';
 
 faker.locale = "pt_BR";
 

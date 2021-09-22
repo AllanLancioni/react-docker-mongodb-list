@@ -36,7 +36,7 @@ export default function Header() {
 
   const menuItems = [
     { label: 'Home', link: '/' },
-    { label: 'Clientes', link: '/clients' },
+    { label: 'Clientes', link: '/customers' },
     { label: 'Títulos', link: '/bonds' },
     { label: 'Pedidos', link: '/orders' },
   ];

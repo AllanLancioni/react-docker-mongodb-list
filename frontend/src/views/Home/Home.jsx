@@ -42,7 +42,7 @@ export default function Home() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => dispatch(getDashboard()), []);
 
-  const navigate = link => _ => history.push(link);
+  const navigate = (pathname, search) => _ => history.push({ pathname, search });
 
   return (
     <section>
@@ -52,7 +52,7 @@ export default function Home() {
 
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={3}>
-            <Item>
+            <Item onClick={ navigate('customers') }>
               <CardTitle >Clientes</CardTitle>
               { getCardInfo(dashboard.data.customers, dashboard.status) }
             </Item>
@@ -70,12 +70,12 @@ export default function Home() {
             </Item>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <Item onClick={ navigate('clients') }>
+            <Item onClick={ navigate('customers', '?defaulting=true') }>
               <CardTitle>
                 Inadimplentes 
                 <ErrorOutlinedIcon style={{ position: 'relative', margin: '-5px 0', color: '#EF5350' }}/>
               </CardTitle>
-              { getCardInfo(1, dashboard.status) }
+              { getCardInfo(dashboard.data.defaultingCustomers, dashboard.status) }
             </Item>
           </Grid>
         </Grid>
